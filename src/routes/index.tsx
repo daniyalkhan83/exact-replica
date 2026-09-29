@@ -1,24 +1,73 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/site/Hero";
+import { Journey } from "@/components/site/Journey";
+import { Intro, Celebrations, Interlude, Contact } from "@/components/site/Sections";
+import { Nav, Footer } from "@/components/site/Chrome";
+import { useRevealObserver } from "@/lib/scroll";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  additionalType: "https://schema.org/EventPlanner",
+  name: "Event Planner by Heer",
+  description:
+    "Wedding and event decoration studio in Gujranwala, Pakistan. Stage decoration, floral installations and lighting for barat, mehndi, walima and family celebrations.",
+  telephone: "+923446116182",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Block B, Satellite Town",
+    addressLocality: "Gujranwala",
+    postalCode: "52250",
+    addressCountry: "PK",
+  },
+  openingHours: "Mo-Su 00:00-23:59",
+  sameAs: ["https://www.instagram.com/eventplannerbyheer/"],
+};
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Event Planner by Heer | Wedding Planner & Decorator in Gujranwala" },
+      {
+        name: "description",
+        content:
+          "Event Planner by Heer is a wedding planner and event decorator in Satellite Town, Gujranwala. Stage decoration, florals and lighting for barat, mehndi and walima.",
+      },
+      {
+        property: "og:title",
+        content: "Event Planner by Heer | Wedding Planner & Decorator in Gujranwala",
+      },
+      {
+        property: "og:description",
+        content:
+          "Wedding and event decoration in Gujranwala: stages, floral walls, draped ceilings and lighting for barat, mehndi, walima and family celebrations.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(localBusiness),
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  useRevealObserver();
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="bg-night">
+      <Nav />
+      <Hero />
+      <Intro />
+      <Journey />
+      <Interlude />
+      <Celebrations />
+      <Contact />
+      <Footer />
+    </main>
   );
 }

@@ -133,7 +133,7 @@ export function Journey() {
           role="dialog"
           aria-modal="true"
           aria-label={current.title}
-          className="fixed inset-0 z-[60] flex flex-col bg-night/97"
+          className="fixed inset-0 z-[60] flex flex-col bg-night"
           onClick={close}
         >
           <div className="flex items-center justify-between px-6 py-5 lg:px-10">

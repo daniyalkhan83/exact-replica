@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 
-const WHATSAPP = "https://wa.me/923446116182";
+const WHATSAPP =
+  "https://wa.me/923446116182?text=" +
+  encodeURIComponent("Hi, I would like to discuss an event with Event Planner by Heer.");
+const MAPS_QUERY = encodeURIComponent(
+  "Event Planner by Heer, Block B, Satellite Town, Gujranwala 52250, Pakistan",
+);
+const MAPS = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
+const DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${MAPS_QUERY}`;
 const PHONE = "tel:+923446116182";
 const INSTAGRAM = "https://www.instagram.com/eventplannerbyheer/";
 
@@ -8,6 +15,7 @@ const links = [
   { label: "The work", href: "#work" },
   { label: "Celebrations", href: "#celebrations" },
   { label: "Studio", href: "#studio" },
+  { label: "Location", href: "#location" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -130,6 +138,9 @@ export function Footer() {
           >
             Instagram, @eventplannerbyheer
           </a>
+          <a href={DIRECTIONS} target="_blank" rel="noreferrer" className="transition-colors hover:text-gold">
+            Get directions
+          </a>
           <span className="text-muted-foreground">Open 24 hours</span>
         </div>
       </div>
@@ -142,4 +153,4 @@ export function Footer() {
   );
 }
 
-export { WHATSAPP, PHONE, INSTAGRAM };
+export { WHATSAPP, PHONE, INSTAGRAM, MAPS, DIRECTIONS };

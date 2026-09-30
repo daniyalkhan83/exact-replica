@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/site/Hero";
 import { Journey } from "@/components/site/Journey";
-import { Intro, Celebrations, Interlude, Contact } from "@/components/site/Sections";
+import { Intro, Celebrations, Interlude, Contact, Location } from "@/components/site/Sections";
 import { Nav, Footer } from "@/components/site/Chrome";
 import { useRevealObserver } from "@/lib/scroll";
 
@@ -67,6 +67,7 @@ function Index() {
       <Interlude />
       <Celebrations />
       <Contact />
+      <Location />
       <Footer />
     </main>
   );

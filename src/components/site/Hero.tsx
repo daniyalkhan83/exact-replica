@@ -1,5 +1,4 @@
-import heer4 from "@/assets/heer4.webp.asset.json";
-import heer1 from "@/assets/heer1.webp.asset.json";
+import { photos } from "@/lib/photos";
 import { useSectionProgress } from "@/lib/scroll";
 
 export function Hero() {
@@ -17,11 +16,14 @@ export function Hero() {
           }}
         >
           <img
-            src={heer4.url}
+            src={photos.mandap.src}
+            srcSet={photos.mandap.srcSet}
+            sizes="100vw"
             alt="Illuminated wedding mandap with chandeliers and floral canopy styled by Event Planner by Heer in Gujranwala"
             className="kenburns h-full w-full object-cover object-center"
-            width={765}
-            height={1020}
+            width={photos.mandap.width}
+            height={photos.mandap.height}
+            decoding="async"
             fetchPriority="high"
           />
         </div>
@@ -35,7 +37,7 @@ export function Hero() {
           }}
           aria-hidden="true"
         >
-          <img src={heer1.url} alt="" className="h-full w-full object-cover" loading="lazy" />
+          <img src={photos.stage.src} srcSet={photos.stage.srcSet} sizes="100vw" alt="" className="h-full w-full object-cover" loading="lazy" />
         </div>
 
         <div
@@ -64,6 +66,14 @@ export function Hero() {
               Wedding and event styling by Heer. Stages, florals and lighting built for barat,
               mehndi, walima and every celebration in between.
             </p>
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a href="#contact" className="min-h-11 border border-gold bg-gold px-8 py-3.5 font-body text-[0.68rem] tracking-[0.3em] text-night uppercase transition-colors duration-500 hover:bg-transparent hover:text-gold">
+                Plan your event
+              </a>
+              <a href="#work" className="min-h-11 border border-ivory/40 px-8 py-3.5 font-body text-[0.68rem] tracking-[0.3em] text-ivory uppercase transition-colors duration-500 hover:border-gold hover:text-gold">
+                View the work
+              </a>
+            </div>
           </div>
         </div>
 

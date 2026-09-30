@@ -1,8 +1,6 @@
-import heer3 from "@/assets/heer3.webp.asset.json";
-import heer4 from "@/assets/heer4.webp.asset.json";
-import heer1 from "@/assets/heer1.webp.asset.json";
+import { photos } from "@/lib/photos";
 import { useParallax } from "@/lib/scroll";
-import { PHONE, WHATSAPP, INSTAGRAM } from "./Chrome";
+import { PHONE, WHATSAPP, INSTAGRAM, MAPS, DIRECTIONS } from "./Chrome";
 
 export function Intro() {
   return (
@@ -94,7 +92,10 @@ export function Celebrations() {
     <section id="celebrations" className="relative overflow-hidden bg-background">
       <div ref={ref} className="absolute inset-0 opacity-25">
         <img
-          src={heer1.url}
+          src={photos.stage.src}
+          srcSet={photos.stage.srcSet}
+          sizes="100vw"
+          decoding="async"
           alt=""
           loading="lazy"
           className="h-[125%] w-full object-cover"
@@ -143,7 +144,10 @@ export function Interlude() {
     <section className="relative h-[85svh] overflow-hidden bg-night">
       <div ref={ref} className="absolute inset-0">
         <img
-          src={heer3.url}
+          src={photos.ceiling.src}
+          srcSet={photos.ceiling.srcSet}
+          sizes="100vw"
+          decoding="async"
           alt="Crystal chandeliers beneath tiered blush and black ceiling draping with strung lights"
           loading="lazy"
           className="h-[130%] w-full object-cover object-center"
@@ -170,7 +174,10 @@ export function Contact() {
     <section id="contact" className="relative overflow-hidden bg-night">
       <div ref={ref} className="absolute inset-0 opacity-40">
         <img
-          src={heer4.url}
+          src={photos.mandap.src}
+          srcSet={photos.mandap.srcSet}
+          sizes="100vw"
+          decoding="async"
           alt=""
           loading="lazy"
           className="h-[120%] w-full object-cover"
@@ -249,6 +256,45 @@ export function Contact() {
             >
               @eventplannerbyheer
             </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Location() {
+  return (
+    <section id="location" className="relative border-t border-border bg-night px-6 py-28 lg:px-10 lg:py-36">
+      <div className="mx-auto grid max-w-[1400px] items-center gap-14 md:grid-cols-12">
+        <div className="md:col-span-5">
+          <p className="eyebrow reveal" data-reveal>Location</p>
+          <h2 className="reveal mt-6 font-display text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] text-ivory" data-reveal data-reveal-delay="80">
+            Event Planner by Heer
+          </h2>
+          <p className="reveal mt-6 font-body text-lg leading-[1.8] text-ivory/80" data-reveal data-reveal-delay="140">
+            Block B, Satellite Town
+            <br />
+            Gujranwala 52250, Pakistan
+          </p>
+          <div className="reveal mt-10 flex flex-col gap-3 sm:flex-row" data-reveal data-reveal-delay="200">
+            <a href={DIRECTIONS} target="_blank" rel="noreferrer" className="min-h-11 border border-gold bg-gold px-8 py-3.5 text-center font-body text-[0.68rem] tracking-[0.3em] text-night uppercase transition-colors duration-500 hover:bg-transparent hover:text-gold">
+              Get directions
+            </a>
+            <a href={MAPS} target="_blank" rel="noreferrer" className="min-h-11 border border-gold/50 px-8 py-3.5 text-center font-body text-[0.68rem] tracking-[0.3em] text-gold uppercase transition-colors duration-500 hover:border-gold hover:bg-gold hover:text-night">
+              View on Google Maps
+            </a>
+          </div>
+        </div>
+        <div className="reveal md:col-span-6 md:col-start-7" data-reveal data-reveal-delay="120">
+          <div className="relative border border-border p-2">
+            <iframe
+              title="Event Planner by Heer on Google Maps"
+              src="https://maps.google.com/maps?q=Event%20Planner%20by%20Heer%2C%20Block%20B%2C%20Satellite%20Town%2C%20Gujranwala%2052250&z=15&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="block h-[360px] w-full grayscale-[0.6] invert-[0.9] hue-rotate-180 contrast-[0.9] md:h-[440px]"
+            />
           </div>
         </div>
       </div>
